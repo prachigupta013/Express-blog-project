@@ -1,0 +1,38 @@
+<%- include('header.ejs') %>
+
+<!-- syntax of ejs -->
+
+<section class="banner">
+    <div class="banner-box">
+        <div class="intro-text">
+            <div class="intro-text-box">
+                <h1>"Nature" can refer to the phenomena of the physical world, and also to life in general.</h1>
+                <p>Earth is the only planet known to support life, and its natural features are the subject of many
+                    fields of scientific
+                    research.</p>
+            </div>
+        </div>
+        <img src="/image/411.jpg" alt="banner" />
+    </div>
+</section>
+<section class="featured-blog mtb-40">
+    <div class="container">
+        <div class="row">
+
+            <% d.forEach((item)=>{ %>
+            <div class="col-md-4">
+                <div class="blog-box">
+                    <img src="<%=item.image.url%>" alt="blog1" width="400" height="250" />
+
+                    <h3><%=item.title%></h3>
+                    <p>Create on-<%= item.createdAt.toLocaleDateString() %></p>
+                    <!-- <p><%=item.updatedAt%></p> -->
+                    <p><b>Description</b>-<%=item.description.slice(0,100) %></p>
+                    <a href="/blogdetail/<%= item._id %>" class="btn btn-danger">Read more...</a>
+                </div>
+
+            </div>
+            <% }) %>
+        </div>
+</section>
+<%- include('footer.ejs') %>

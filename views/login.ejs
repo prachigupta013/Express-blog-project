@@ -1,0 +1,40 @@
+<%- include('header.ejs')%>
+<section class="login-wrap mtb-40">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="login-box">
+                    <h1>Administrator Login</h1>
+
+                    <% if(message.length> 0){ %>
+                    <div class="alert alert-success">
+                        <%= message %>
+                    </div>
+                    <%}%>
+                    <% if(message1.length>0){ %>
+                    <div class="alert alert-danger">
+                        <%=message1 %>
+                    </div>
+                    <%}%>
+
+                       
+
+
+                    <form action="/verify_login" method="post">
+                        <div class="form-group">
+                            <input type="text" name="email" class="form-control" placeholder="Username">
+                        </div>
+                        <div class="form-group">
+                            <input type="password" name="password" class="form-control" placeholder="Password">
+                        </div>
+                        <div class="form-group">
+                            <button class="btn btn-primary">Log In</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<%- include('footer.ejs')%>

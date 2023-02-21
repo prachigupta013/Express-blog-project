@@ -1,0 +1,61 @@
+<%-include('header.ejs') %>
+
+<section class="blog-detail mtb-40">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8">
+                <div class="blog-left">
+                    <h1><%= r.title %></h1>
+                    <div class="posted-on">
+                        <p>by <span>Prachi Gupta</span> on <span><%= r.createdAt.toLocaleDateString() %></span></p>
+                    </div>
+                    <div class="detail-img">
+                        <img class="img-fluid" src="<%= r.image.url %>" height="426" width="640" alt="blog1" />
+                        <!-- <img src="/assets/images/img1.jpg" alt="blog1" /> -->
+                    </div>
+                    <div class="blog-desc">
+                        <p> <%= r.description %> </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="blog-right">
+                    <div class="right-widget recent-post">
+                        <h3>Recent Blogs</h3>
+                        <% recentblog.forEach((items)=>{ %>
+
+                        <a href="/detail/<%= items._id %>">
+                            <div class="rb-box">
+                                <div class="rb-box-img">
+                                    <img src="<%= items.image.url %>" width="100px" height="67px" alt="blog1" />
+                                </div>
+                                <div class="rb-box-desc">
+                                    <h4><%= items.title  %></h4>
+                                    <p><%= items.createdAt.toLocaleDateString() %></p>
+                                </div>
+                            </div>
+                        </a>
+                        <% }) %>
+                    </div>
+                    <div class="right-widget categories">
+                        <h3>Categories</h3>
+                        <ul>
+
+                            <% category.forEach((item)=>{ %>
+                            <li><a href="/detailbycategory/<%= item.category_name %>"><%= item.category_name %></a>
+                            </li>
+
+                            <% }) %>
+                        </ul>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+</section>
+
+<%-include('footer.ejs') %>

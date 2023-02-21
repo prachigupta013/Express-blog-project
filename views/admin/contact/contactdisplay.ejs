@@ -1,0 +1,132 @@
+<%- include('../../header.ejs')%>
+<section class="dashboard-wrap mtb-40">
+    <div class="container">
+        <div class="body-content">
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="dash-left">
+                        <ul>
+                            <li class="active"><a href="/admin/dashboard">Dashboard</a></li>
+                            <li><a href="/admin/blog">Blogs</a></li>
+                            <li><a href="/admin/categorydisplay">Categories</a></li>
+                            <li><a href="/admin/contactdisplay" class="active">Contact</a></li>
+                            <li><a href="/admin/aboutdisplay">About</a></li>
+                            <li><a href="/logout">Logout</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-9">
+                    <div class="dash-right">
+                        <div class="dash-header">
+                            <div class="dash-title">
+                                <h1>Contact</h1>
+                            </div>
+                            <!-- <div class="dash-nav">
+                                <button type="button" class="btn btn-success" data-toggle="modal"
+                                    data-target="#exampleModal">Add Contact</button>
+                            </div> -->
+                        </div>
+                        <table class="table table-bordered table-striped">
+                            <tr>
+                                <th>S.No</th>
+                                <th>Name</th>
+                                <th>Contact Number</th>
+                                <th>Email Address</th>
+                                <th>Message</th>
+                                <th>Action</th>
+                            </tr>
+                            <% i=1 %>
+
+                            <% d.forEach((con)=>{   %>
+                            <tr>
+                                <td>
+                                    <%= i++ %>
+                                </td>
+                                <td>
+                                    <%= con.name %>
+                                </td>
+                                <td>
+                                    <%= con.contact %>
+                                </td>
+                                <td>
+                                    <%= con.email %>
+                                </td>
+                                <td>
+                                    <%= con.message %>
+                                </td>
+
+                                <td>
+                                    <a href="/admin/contactview/<%= con._id %>" class="btn btn-info">View</a>
+                                    <a href="/admin/contactedit/<%= con._id %>" class="btn btn-success">Edit</a>
+                                    <a href="/admin/contactdelete/<%= con._id %>" class="btn btn-danger">Delete</a>
+                                </td>
+
+                            </tr>
+                            <% }) %>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <!-- <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Add Contact</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div> -->
+                <div class="modal-body">
+
+                    <form method="post" action="/contactinsert" encType="multipart/form-data">
+                        <div class="form-group form-row">
+                            <label class="col-md-3 required">Name *</label>
+                            <div class="col-md-9">
+                                <input type="text" class="form-control" placeholder="Name" required
+                                    formControlName="name">
+                            </div>
+                        </div>
+                        <div class="form-group form-row">
+                            <label class="col-md-3 required">Contact Number *</label>
+                            <div class="col-md-9">
+                                <input type="number" class="form-control" placeholder="contact" required
+                                    formControlName="contact">
+                            </div>
+                        </div>
+
+                        <div class="form-group form-row">
+                            <label class="col-md-3 required">Email Address *</label>
+                            <div class="col-md-9">
+                                <input type="text" class="form-control" placeholder="email" required
+                                    formControlName="email">
+                            </div>
+                        </div>
+                        <div class="form-group form-row">
+                            <label class="col-md-3 required">Message *</label>
+                            <div class="col-md-9">
+                                <input type="text" class="form-control" placeholder="message" required
+                                    formControlName="message">
+                            </div>
+                        </div>
+
+                        <div class="form-group form-row">
+                            <label class="col-md-3"></label>
+                            <div class="col-md-9">
+                                <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">close</button> -->
+                                <button type="button" class="btn btn-primary">Save</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<%- include('../../footer.ejs')%>

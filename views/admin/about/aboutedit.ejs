@@ -1,0 +1,62 @@
+<%- include('../../header.ejs')%>
+
+<section class="dashboard-wrap mtb-40">
+    <div class="container">
+        <div class="body-content">
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="dash-left">
+                        <ul>
+                            <li class="active"><a href="/admin/dashboard">Dashboard</a></li>
+                            <li><a href="/admin/blog">Blogs</a></li>
+                            <li><a href="/admin/category">Categories</a></li>
+                            <li><a href="/admin/contactdisplay">Contact</a></li>
+                            <li><a href="/admin/about" class="active">About</a></li>
+                            <li><a href="/logout">Logout</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-9">
+                    <div class="dash-right">
+                        <div class="dash-header">
+                            <div class="dash-title">
+                                <h1>Edit About of <%= aboutedit._id %></h1>
+                            </div>
+
+                        </div>
+
+                        <form method="post" action="/aboutupdate/<%= aboutedit._id %>">
+
+                            <!-- <div class="form-group form-row">
+                                <label class="col-md-3 required">Title *</label>
+                                <div class="col-md-9">
+                                    <input type="text" class="form-control" name="title"
+                                        value="<%= categoryedit.title %>" placeholder="Title" required>
+                                </div>
+                            </div> -->
+
+                            <div class="form-group form-row">
+                                <label class="col-md-3 required">Description *</label>
+                                <div class="col-md-9">
+                                    <textarea name="description" rows="5" placeholder="Description" class="form-control"
+                                        required> <%= aboutedit.description %> </textarea>
+                                </div>
+                            </div>
+
+                            <div class="form-group form-row">
+                                <label class="col-md-3"></label>
+                                <div class="col-md-9">
+                                    <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">close</button> -->
+                                    <button type="submit" class="btn btn-primary">Update</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<%- include('../../footer.ejs')%>

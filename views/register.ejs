@@ -1,0 +1,41 @@
+<%- include('header.ejs') %>
+<section class="cmspage mtb-40">
+    <div class="container">
+        <div class="page-desc">
+            <div class="row justify-content-center">
+                <div class="col-md-8">
+                    <h1>Register admin</h1>
+
+                    <% if(message.length> 0){ %>
+                    <div class="alert alert-danger">
+                        <%= message %>
+                    </div>
+                    <%}%>
+                    
+                    
+
+                    <form method="post" action="/adminregister" encType="multipart/form-data">
+                        <div class="form-group">
+                            <input type="text" name="name" class="form-control" placeholder="Name">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name="email" class="form-control" placeholder="E-Mail">
+                        </div>
+                        <div class="form-group">
+                            <input type="password" name="password" class="form-control" placeholder="Password">
+                        </div>
+                        <div class="form-group">
+                            <input type="password" name="confirmpassword" class="form-control"
+                                placeholder="Confirm_Password"></input>
+                        </div>
+                        <div class="form-group">
+                            <button class="btn btn-success">Submit</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<%- include('footer.ejs') %>

@@ -1,0 +1,77 @@
+<%- include('../../header.ejs')%>
+
+<section class="dashboard-wrap mtb-40">
+    <div class="container">
+        <div class="body-content">
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="dash-left">
+                        <ul>
+                            <li class="active"><a href="/admin/dashboard">Dashboard</a></li>
+                            <li><a href="/admin/blog">Blogs</a></li>
+                            <li><a href="/admin/category" class="active">Categories</a></li>
+                            <li><a href="/admin/contactdisplay">Contact</a></li>
+                            <li><a href="/admin/about">About</a></li>
+                            <li><a href="/logout">Logout</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-9">
+                    <div class="dash-right">
+                        <table class="table table-bordered table-striped">
+                            <tr>
+                                <th>S.No</th>
+                                <th>Image</th>
+                                <th>Category Name</th>
+
+                            </tr>
+                            <tr>
+                                <td><%= categoryview._id %></td>
+                                <td><img src="<%= categoryview.image.url  %>" width="50px"></td>
+                                <td><%= categoryview.category_name %></td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form method="post" action="/categoryinsert" encType="multipart/form-data">
+                        <div class="form-group form-row">
+                            <label class="col-md-3 required">Category Name *</label>
+                            <div class="col-md-9">
+                                <input type="text" class="form-control" name="category_name" placeholder="category_name"
+                                    required>
+                            </div>
+                        </div>
+
+                        <div class="form-group form-row">
+                            <label class="col-md-3 required">Upload Image *</label>
+                            <div class="col-md-9">
+                                <input type="file" name="image" class="form-control" formControlName="image">
+                            </div>
+                        </div>
+
+
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<%- include('../../footer.ejs')%>

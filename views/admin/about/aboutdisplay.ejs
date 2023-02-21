@@ -1,0 +1,103 @@
+<%- include('../../header.ejs')%>
+
+<section class="dashboard-wrap mtb-40">
+    <div class="container">
+        <div class="body-content">
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="dash-left">
+                        <ul>
+                            <li class="active"><a href="/admin/dashboard">Dashboard</a></li>
+                            <li><a href="/admin/blog">Blogs</a></li>
+                            <li><a href="/admin/category">Categories</a></li>
+                            <li><a href="/admin/contactdisplay">Contact</a></li>
+                            <li><a href="/admin/about" class="active">About</a></li>
+                            <li><a href="/logout">Logout</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-9">
+                    <div class="dash-right">
+                        <div class="dash-header">
+                            <div class="dash-title">
+                                <h1>About</h1>
+                            </div>
+                            <div class="dash-nav">
+                                <button type="button" class="btn btn-success" data-toggle="modal"
+                                    data-target="#exampleModal">Add About</button>
+                            </div>
+                        </div>
+                        <table class="table table-bordered table-striped">
+                            <tr>
+                                <th>S.No</th>
+                                <th>Description</th>
+                                <th>Action</th>
+                            </tr>
+                            <% i=1 %>
+
+                            <% d.forEach((a)=>{   %>
+                            <tr>
+                                <td>
+                                    <%= i++ %>
+                                </td>
+                                <td>
+                                    <%= a.description  %>
+                                </td>
+
+                                <td>
+                                    <a href="/admin/aboutview/<%= a._id %>" class="btn btn-info">View</a>
+                                    <a href="/admin/aboutedit/<%= a._id %>" class="btn btn-success">Edit</a>
+                                    <a href="/admin/aboutdelete/<%= a._id %>" class="btn btn-danger">Delete</a>
+                                </td>
+                            </tr>
+                            <% }) %>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">About</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form method="post" action="/aboutinsert">
+                        <!-- <div class="form-group form-row">
+                            <label class="col-md-3 required">Title *</label>
+                            <div class="col-md-9">
+                                <input type="text" class="form-control" name="title" placeholder="Title" required>
+                            </div>
+                        </div> -->
+
+                        <div class="form-group form-row">
+                            <label class="col-md-3 required">Description *</label>
+                            <div class="col-md-9">
+                                <textarea name="description" rows="5" placeholder="Description" class="form-control"
+                                    required></textarea>
+                            </div>
+                        </div>
+                        <div class="form-group form-row">
+                            <label class="col-md-3"></label>
+                            <div class="col-md-9">
+                                <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">close</button> -->
+                                <button type="submit" class="btn btn-primary">Submit</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<%- include('../../footer.ejs')%>
