@@ -51,7 +51,7 @@ class FrontController
     // user login and registration
     static login = ( req, res ) =>
     {
-        res.render( 'login', {message: req.flash( "success" ),message1: req.flash( "error" )})//,{message1: req.flash( "error" )} )
+        res.render( 'login', {message: req.flash( "success" ),message1: req.flash( "error" )})
     }
     static adminregister = async ( req, res ) =>
     {
